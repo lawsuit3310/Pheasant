@@ -1,0 +1,69 @@
+{
+  "project_info": {
+    "project_number": "586200502496",
+    "firebase_url": "https://la-prova-default-rtdb.firebaseio.com",
+    "project_id": "la-prova",
+    "storage_bucket": "la-prova.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:586200502496:android:819c7216a092a825c28085",
+        "android_client_info": {
+          "package_name": "com.example.layout"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "586200502496-odgdkk854qig70uubbprcmpfoc736rmk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC_LDqUVbEjxsonm6qsfsVm_Lt8r6K7YZY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "586200502496-odgdkk854qig70uubbprcmpfoc736rmk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:586200502496:android:20d6054e14868b17c28085",
+        "android_client_info": {
+          "package_name": "com.example.pheasant"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "586200502496-odgdkk854qig70uubbprcmpfoc736rmk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC_LDqUVbEjxsonm6qsfsVm_Lt8r6K7YZY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "586200502496-odgdkk854qig70uubbprcmpfoc736rmk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
