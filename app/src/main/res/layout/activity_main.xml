@@ -2,24 +2,57 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:padding="20dp">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <Spinner
-            android:id="@+id/Start"
+        <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:entries="@array/Nodes"/>
+            android:layout_height="wrap_content">
 
-        <Spinner
-            android:id="@+id/Arrive"
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Start" />
+
+            <Spinner
+                android:id="@+id/Start"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:entries="@array/Nodes" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Arrive"
+
+                />
+
+            <Spinner
+                android:id="@+id/Arrive"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:entries="@array/Nodes" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/sender"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:entries="@array/Nodes"/>
+
+            android:layout_marginTop="20dp"
+            android:text="Send" />
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
