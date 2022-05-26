@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- 교사동 3층 -->
+    <string-array name="teach3F">
+        <item>학생인권안전부</item>
+        <item>2학년 1반</item>
+        <item>2학년 2반</item>
+        <item>2학년 3반</item>
+        <item>2학년 4반</item>
+        <item>2학년 5반</item>
+        <item>2학년 6반</item>
+        <item>2학년 7반</item>
+        <item>2학년 8반</item>
+        <item>취업진로센터</item>
+        <item>취업지원부</item>
+        <item>영어전용교실</item>
+        <item>생활관운영지원부</item>
+    </string-array>
+</resources>

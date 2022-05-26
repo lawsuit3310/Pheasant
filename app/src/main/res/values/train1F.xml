@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="train1F">
+        <item>산업용로봇제어실 I(101호)</item>
+        <item>산업용로봇제어실 II(102호)</item>
+        <item>설계 시스템 준비실(103호)</item>
+        <item>CAD I(104호)</item>
+        <item>CAD II(105호)</item>
+        <item>로봇제조기술(106호)</item>
+        <item>정보통신기기개발 I(107호)</item>
+        <item>정보통신기기개발 II(108호)</item>
+        <item>로봇캡스톤디자인실(109호)</item>
+        <item>댄스동아리실(110호)</item>
+        <item>CAD IV(111호)</item>
+        <item>CAD II(112호)</item>
+        <item>진로활동실(113호)</item>
+    </string-array>
+</resources>

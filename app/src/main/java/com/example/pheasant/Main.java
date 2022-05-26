@@ -1,5 +1,6 @@
 package com.example.pheasant;
 
+import android.os.Build;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.util.Log;
@@ -21,23 +22,37 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.nio.charset.StandardCharsets;
 import java.util.UUID;
 
 public class Main extends AppCompatActivity implements AdapterView.OnItemSelectedListener, View.OnClickListener {
     /* 맴버 변수 */
     Spinner setStartPoint;
     Spinner setArrivePoint;
+    Spinner setBuildingStart;
+    Spinner setFloorStart;
+    Spinner setBuildingArrive;
+    Spinner setFloorArrive;
 
     ArrayAdapter<CharSequence> adapter;
+    ArrayAdapter<CharSequence> Buildadapter;
+    ArrayAdapter<CharSequence> Flooradapter;
 
     Button sendBtn;
 
+    DatabaseManager dbManager;
+
     String resultS = null; //시작점 전달해줄 변수
     String resultA = null; //도착점 전달해줄 변수
+    String BuildingS = null;
+    String FloorS = null;
+    String BuildingA = null;
+    String FloorA = null;
 
     final static String CACHE_DEVICE_ID = "CacheDeviceID";
 
-    DatabaseManager dbManager;
+    int[] adapters = {R.array.DefaultSpinner, R.array.teach1F, R.array.teach2F, R.array.teach3F, R.array.teach4F,
+            R.array.train1F, R.array.train2F, R.array.train3F, R.array.train4F};
 
     /* 메인 동작 */
     @Override
@@ -48,18 +63,36 @@ public class Main extends AppCompatActivity implements AdapterView.OnItemSelecte
 
         setStartPoint = findViewById(R.id.Start);
         setArrivePoint = findViewById(R.id.Arrive);
+        setBuildingStart = findViewById(R.id.BuildingS);
+        setBuildingArrive = findViewById(R.id.BuildingA);
+        setFloorStart = findViewById(R.id.FloorS);
+        setFloorArrive = findViewById(R.id.FloorA);
         sendBtn = findViewById(R.id.sender);
 
         adapter = ArrayAdapter.createFromResource(this,
-                R.array.Nodes, android.R.layout.simple_spinner_item);
+                adapters[0], android.R.layout.simple_spinner_item);
+        Buildadapter = ArrayAdapter.createFromResource(this,
+                R.array.Building, android.R.layout.simple_spinner_item);
+        Flooradapter = ArrayAdapter.createFromResource(this,
+                R.array.Floor, android.R.layout.simple_spinner_item);
 
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
         setStartPoint.setAdapter(adapter);
         setArrivePoint.setAdapter(adapter);
+        setBuildingStart.setAdapter(Buildadapter);
+        setFloorStart.setAdapter(Flooradapter);
+        setBuildingArrive.setAdapter(Buildadapter);
+        setFloorArrive.setAdapter(Flooradapter);
+
+        Log.d("JB", getDeviceSSAID());
 
         setStartPoint.setOnItemSelectedListener(this);
         setArrivePoint.setOnItemSelectedListener(this);
+        setBuildingStart.setOnItemSelectedListener(this);
+        setFloorStart.setOnItemSelectedListener(this);
+        setBuildingArrive.setOnItemSelectedListener(this);
+        setFloorArrive.setOnItemSelectedListener(this);
         sendBtn.setOnClickListener(this);
 
 
@@ -68,21 +101,54 @@ public class Main extends AppCompatActivity implements AdapterView.OnItemSelecte
     /* 메소드 */
     @Override
     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-        //n-1번째로 선택된 값 출력
-        try {
-            if (adapter.getItemId(i) != 0) {
-                if (adapterView.getId() == (R.id.Start) && setStartPoint.getId() != 0) {
-                    resultS = adapter.getItem(i).toString();
-                }
+        if (adapterView.equals(setStartPoint) || adapterView.equals(setArrivePoint)) {
+            try {
+                if (adapter.getItemId(i) != 0) {
+                    if (adapterView.getId() == (R.id.Start) && setStartPoint.getId() != 0) {
+                        resultS = adapterView.getSelectedItem() + "";
+                    }
 
-                if (adapterView.getId() == (R.id.Arrive) && setArrivePoint.getId() != 0) {
-                    resultA = adapter.getItem(i).toString();
+                    if (adapterView.getId() == (R.id.Arrive) && setArrivePoint.getId() != 0) {
+                        resultA = adapterView.getSelectedItem() + "";
+                    }
                 }
+            } catch (Exception e) {
+                Log.d("JB", e.getMessage());
             }
-        } catch (Exception e) {
-            Log.d("JB", e.getMessage());
-        }
+        } else if (adapterView.equals(setBuildingStart)) {
+            //작동 여부 확인 Log.d("JB", true+"");
+            if (BuildingS == null || FloorS == null) {
+                BuildingS = adapterView.getSelectedItem() + "";
+            } else {
+                BuildingS = adapterView.getSelectedItem() + "";
+                getIndex(BuildingS, FloorS,true);
+            }
+        } else if (adapterView.equals(setFloorStart)) {
+            //작동 여부 확인 Log.d("JB", false+"");
 
+            if (BuildingS == null || FloorS == null) {
+                FloorS = adapterView.getSelectedItem() + "";
+            } else {
+                FloorS = adapterView.getSelectedItem() + "";
+                getIndex(BuildingS, FloorS, true);
+            }
+        } else if (adapterView.equals(setBuildingArrive)) {
+            if (BuildingA == null || Flooradapter == null) {
+                BuildingA = adapterView.getSelectedItem() + "";
+            } else {
+                BuildingA = adapterView.getSelectedItem() + "";
+               getIndex(BuildingA, FloorA, false);
+            }
+        } else if (adapterView.equals(setFloorArrive)) {
+            //Log.d("JB", false+"");
+
+            if (BuildingA == null || FloorA == null) {
+                FloorA = adapterView.getSelectedItem() + "";
+            } else {
+                FloorA = adapterView.getSelectedItem() + "";
+                getIndex(BuildingA, FloorA, false);
+            }
+        }
 
     }
 
@@ -97,35 +163,15 @@ public class Main extends AppCompatActivity implements AdapterView.OnItemSelecte
             if (resultS.equals(resultA))
                 Toast.makeText(Main.this, "출발점과 도착점이 같을 수 없습니다!", Toast.LENGTH_SHORT).show();
             else
-                dbManager.toSend(GetDeviceUUID(), resultS, resultA);
+                dbManager.toSend(getDeviceSSAID(), resultS, resultA);
 
             JsonParsing(getJsonString());
         }
     }
 
-    /* 앱을 사용하는 기기의 UUID를 가져오는 메소드 (정상작동) */
-    public String GetDeviceUUID() {
-        UUID deviceUUID = null;
-        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(Main.this);
-        String cachedDeviceID = sharedPreferences.getString(CACHE_DEVICE_ID, "");
-
-        if (cachedDeviceID != "") {
-            deviceUUID = UUID.fromString(cachedDeviceID);
-        } else {
-            final String androidUniqueID = Settings.Secure.getString(Main.this.getContentResolver(), Settings.Secure.ANDROID_ID);
-            try {
-                if (androidUniqueID != null) {
-                    deviceUUID = UUID.nameUUIDFromBytes(androidUniqueID.getBytes("utf8"));
-                } else {
-                    deviceUUID = UUID.randomUUID();
-                }
-            } catch (Exception e) {
-                throw new RuntimeException(e);
-            }
-        }
-
-        sharedPreferences.edit().putString(cachedDeviceID, deviceUUID.toString()).apply();
-        return deviceUUID.toString();
+    /* 앱을 사용하는 기기의 SSAID 가져오는 메소드 (정상작동) */
+    public String getDeviceSSAID() {
+        return Settings.Secure.getString(getApplication().getContentResolver(), Settings.Secure.ANDROID_ID);
     }
 
     public String getJsonString() {
@@ -138,26 +184,61 @@ public class Main extends AppCompatActivity implements AdapterView.OnItemSelecte
             byte[] buffer = new byte[fileSize];
             is.read(buffer);
             is.close();
-            json = new String(buffer, "UTF-8");
+            json = new String(buffer, StandardCharsets.UTF_8);
         } catch (IOException e) {
             e.printStackTrace();
         }
         return json;
     }
 
-    void JsonParsing(String json){
-            try {
-                JSONObject jsonObject = new JSONObject(json); //json 포맷의 string 변수를 넘겨받아 jsonObject 생성
+    void JsonParsing(String json) {
+        try {
+            JSONObject jsonObject = new JSONObject(json); //json 포맷의 string 변수를 넘겨받아 jsonObject 생성
 
-                JSONArray AreaArray = jsonObject.getJSONArray("Nodes");
-                for (int i = 0; i < AreaArray.length(); i++)
-                {
-                    JSONObject Node = AreaArray.getJSONObject(i); //출력하려면 JSONObject 형으로 바꿔줘야함
-                    Log.d("JB", Node.toString());
-                }
-            } catch (JSONException e) {
-                Log.d("JB", e.getMessage());
-                e.printStackTrace();
+            JSONArray AreaArray = jsonObject.getJSONArray("Nodes");
+            for (int i = 0; i < AreaArray.length(); i++) {
+                JSONObject Node = AreaArray.getJSONObject(i); //출력하려면 JSONObject 형으로 바꿔줘야함
+                Log.d("JB", Node.toString());
             }
+        } catch (JSONException e) {
+            Log.d("JB", e.getMessage());
+            e.printStackTrace();
+        }
+    }
+
+    /* true가 가는거 false가 오는거 */
+    int getIndex(String Building, String Floor, boolean direction) {
+        int B = Building.equals("교사동") ? 0 : 4;
+        int F = 1;
+        switch (Floor) {
+            case "1층":
+                F = 1;
+                break;
+            case "2층":
+                F = 2;
+                break;
+            case "3층":
+                F = 3;
+                break;
+            case "4층":
+                F = 4;
+                break;
+        }
+        ChangeSetters(B+F, direction);
+        return B+F;
+    }
+
+    void ChangeSetters(int idx, boolean direction)
+    {
+        adapter = ArrayAdapter.createFromResource(this,
+                adapters[idx], android.R.layout.simple_spinner_item);
+        if(direction)
+        {
+            setStartPoint.setAdapter(adapter);
+        }
+        else
+        {
+            setArrivePoint.setAdapter(adapter);
+        }
     }
 }

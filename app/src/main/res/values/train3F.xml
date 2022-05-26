@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="train3F">
+        <item>로봇디자인실(301호)</item>
+        <item>공업전자기기(302호)</item>
+        <item>정보기술(303호)</item>
+        <item>로봇메이커랩</item>
+        <item>모바일로보틱스(305호)</item>
+        <item>기계/CAD(306호)</item>
+        <item>공업전자기기(307호)</item>
+        <item>IoT실(308호)</item>
+        <item>산업용로봇(309호)</item>
+        <item>메카트로닉스(310호)</item>
+    </string-array>
+</resources>

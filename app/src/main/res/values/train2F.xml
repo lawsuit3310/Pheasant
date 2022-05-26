@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="train2F">
+        <item>시청각실</item>
+        <item>PLC 제어 II(202호)</item>
+        <item>HW/SW 개발실 II(203호)</item>
+        <item>프로그래밍 I(204호)</item>
+        <item>프로그래밍 II(205호)</item>
+        <item>첨단로봇시스템부(206호)</item>
+        <item>프로그래밍 III(207호)</item>
+        <item>프로그래밍 IV(208호)</item>
+        <item>첨단로봇설계부(209호)</item>
+        <item>PLC 제어 I(210호)</item>
+    </string-array>
+</resources>

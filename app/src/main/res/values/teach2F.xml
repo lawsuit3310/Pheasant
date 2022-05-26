@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- 교사동 2층 -->
+    <string-array name="teach2F">
+        <item>창의체험지원부</item>
+        <item>취업지원부</item>
+        <item>인문자연교육부</item>
+        <item>3학년 1반</item>
+        <item>3학년 2반</item>
+        <item>3학년 3반</item>
+        <item>3학년 3반</item>
+        <item>3학년 4반</item>
+        <item>3학년 5반</item>
+        <item>3학년 6반</item>
+        <item>3학년 7반</item>
+        <item>3학년 8반</item>
+        <item>wee class</item>
+        <item>서고</item>
+        <item>여교사 휴게실</item>
+        <item>남교사 휴게실</item>
+        <item>과학실</item>
+        <item>과학준비실</item>
+    </string-array>
+</resources>

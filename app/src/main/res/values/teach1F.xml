@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- 교사동 1층 -->
+    <string-array name="teach1F">
+        <item>교장실</item>
+        <item>행정실</item>
+        <item>진로홍보부</item>
+        <item>연구기획부</item>
+        <item>교무운영부</item>
+        <item>방송실</item>
+        <item>관리실</item>
+        <item>성적 처리실</item>
+        <item>꿈담은 카페</item>
+        <item>인쇄실</item>
+        <item>보건실</item>
+        <item>마이스터기획부</item>
+        <item>자율학습실</item>
+        <item>도서실</item>
+        <item>회의실</item>
+    </string-array>
+</resources>
