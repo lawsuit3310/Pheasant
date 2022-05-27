@@ -112,6 +112,11 @@ public class Main extends AppCompatActivity implements AdapterView.OnItemSelecte
                         resultA = adapterView.getSelectedItem() + "";
                     }
                 }
+                else
+                {
+                    resultS = null;
+                    resultA = null;
+                }
             } catch (Exception e) {
                 Log.d("JB", e.getMessage());
             }
@@ -161,11 +166,18 @@ public class Main extends AppCompatActivity implements AdapterView.OnItemSelecte
     public void onClick(View view) {
         if (resultS != null && resultA != null) {
             if (resultS.equals(resultA))
-                Toast.makeText(Main.this, "출발점과 도착점이 같을 수 없습니다!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(Main.this, "아잇~ 출발하는 곳하고 도착할 곳을 똑같이 주면 갈 수가 없잖아!", Toast.LENGTH_SHORT).show();
             else
+            {
                 dbManager.toSend(getDeviceSSAID(), resultS, resultA);
-
+                Toast.makeText(this, "그럼 출발한다?", Toast.LENGTH_SHORT).show();
+            }
             JsonParsing(getJsonString());
+        }
+
+        else
+        {
+            Toast.makeText(this, "아잇~ 제대로 된 장소를 알려달란 말이야", Toast.LENGTH_SHORT).show();
         }
     }
 
