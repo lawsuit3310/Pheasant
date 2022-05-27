@@ -1,4 +1,5 @@
 #임포트 안되면 인터프립터 설정 다시해보기
+from urllib import request
 import firebase_admin
 import time
 from firebase_admin import credentials
@@ -12,36 +13,38 @@ dir = db.reference()
 #print(type(dir.get()))
 
 #기기의 SSAID를 받아와 저장할 리스트
-users = dir.get().keys()
+users = list(dir.get().keys())
 #각 기기들의 요청을 가져와 저장할 리스트
-requests = dir.get().values()
+requests = list(dir.get().values())
 
 print(requests)
 
-
-
 try:
     while 1:
-        updateStatus()
-        time.sleep(0.1)#0.1초 마다 호출
+        dir = db.reference()
+        currentU = users
+        currentR = requests
+        result = '' #결과를 담을 변수
+
+        users = list(dir.get().keys())
+        requests = list(dir.get().values())
+
+        if users != currentU:
+            if users > currentU:
+                #새로운 유저에게서 요청이 들어온 상황이므로 구현 바람.
+                for userC in currentU:
+                    if userC in users:
+                        users.remove(userC)
+                result = dir.get()["".join(users)] #새로운 유저가 보낸 요청을 받아 저장
+            else: 
+                #기존 데이터가 삭제 되었을 경우
+                pass
+
+        elif requests != currentR:
+            pass
+            #기존 유저가 다른 요청을 보냄
+        time.sleep(1)#0.1초 마다 호출
 
 except KeyboardInterrupt:
     exit()
-
-def updateStatus():
-    dir = db.reference()
-
-    currentU = users
-    currentR = requests
-
-    users = dir.get().keys()
-    requests = dir.get().values()
-
-    if users != currentU:
-        pass
-        #새로운 유저에게서 요청이 들어온 상황이므로 구현 바람.
-    
-    elif requests != currentR:
-        pass
-        #기존 유저가 다른 요청을 보냄
     
