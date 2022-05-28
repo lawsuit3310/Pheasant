@@ -1,10 +1,9 @@
 #임포트 안되면 인터프립터 설정 다시해보기
-from urllib import request
 import firebase_admin
 import time
 from firebase_admin import credentials
 from firebase_admin import db
-from nbformat import current_nbformat
+
 
 cred = credentials.Certificate('la-prova-firebase-adminsdk-9huj0-3cf67c4d09.json')
 firebase_admin.initialize_app(cred,{'databaseURL':'https://la-prova-default-rtdb.firebaseio.com/'})
@@ -40,7 +39,7 @@ try:
             else: 
                 #기존 데이터가 삭제 되었을 경우
                 print("값이 잘못된 경로를 통하여 변경되었습니다.\n프로그램을 종료합니다.")
-                #exit()
+                exit()
 
         elif requests != currentR:
             #기존 유저가 다른 요청을 보냄
