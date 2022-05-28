@@ -4,6 +4,7 @@ import firebase_admin
 import time
 from firebase_admin import credentials
 from firebase_admin import db
+from nbformat import current_nbformat
 
 cred = credentials.Certificate('la-prova-firebase-adminsdk-9huj0-3cf67c4d09.json')
 firebase_admin.initialize_app(cred,{'databaseURL':'https://la-prova-default-rtdb.firebaseio.com/'})
@@ -38,12 +39,23 @@ try:
                 result = dir.get()["".join(users)] #새로운 유저가 보낸 요청을 받아 저장
             else: 
                 #기존 데이터가 삭제 되었을 경우
-                pass
+                print("값이 잘못된 경로를 통하여 변경되었습니다.\n프로그램을 종료합니다.")
+                #exit()
 
         elif requests != currentR:
-            pass
             #기존 유저가 다른 요청을 보냄
-        time.sleep(1)#0.1초 마다 호출
+            for req in requests:
+                print(True)
+                for requestC in currentR:
+                    if req != requestC: #다른 부분 찾아내서 반복문
+                        result = req
+                        break
+                if result != '':
+                    break
+
+            print(result)
+
+        time.sleep(0.1)#0.1초 마다 호출
 
 except KeyboardInterrupt:
     exit()
