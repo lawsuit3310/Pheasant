@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="train3F">
+        <item>실습동 3층</item>
         <item>로봇디자인실(301호)</item>
         <item>공업전자기기(302호)</item>
         <item>정보기술(303호)</item>

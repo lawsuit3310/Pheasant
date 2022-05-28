@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="train4F">
+        <item>실습동 4층</item>
         <item>서버실(401호)</item>
         <item>로봇제작 I(402호)</item>
         <item>로봇제작 II(403호)</item>

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="train2F">
+        <item>실습동 2층</item>
         <item>시청각실</item>
         <item>PLC 제어 II(202호)</item>
         <item>HW/SW 개발실 II(203호)</item>

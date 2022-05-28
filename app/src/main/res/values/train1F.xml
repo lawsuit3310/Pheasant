@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="train1F">
+        <item>실습동 1층</item>
         <item>산업용로봇제어실 I(101호)</item>
         <item>산업용로봇제어실 II(102호)</item>
         <item>설계 시스템 준비실(103호)</item>

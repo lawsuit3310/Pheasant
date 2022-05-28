@@ -2,6 +2,7 @@
 <resources>
     <!-- 교사동 3층 -->
     <string-array name="teach3F">
+        <item>교사동 3층</item>
         <item>학생인권안전부</item>
         <item>2학년 1반</item>
         <item>2학년 2반</item>

@@ -2,6 +2,7 @@
 <resources>
     <!-- 교사동 2층 -->
     <string-array name="teach2F">
+        <item>교사동 2층</item>
         <item>창의체험지원부</item>
         <item>취업지원부</item>
         <item>인문자연교육부</item>

@@ -2,6 +2,7 @@
 <resources>
     <!-- 교사동 1층 -->
     <string-array name="teach1F">
+        <item>교사동 1층</item>
         <item>교장실</item>
         <item>행정실</item>
         <item>진로홍보부</item>

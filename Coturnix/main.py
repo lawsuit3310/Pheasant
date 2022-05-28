@@ -44,13 +44,9 @@ try:
 
         elif requests != currentR:
             #기존 유저가 다른 요청을 보냄
-            for req in requests:
-                print(True)
-                for requestC in currentR:
-                    if req != requestC: #다른 부분 찾아내서 반복문
-                        result = req
-                        break
-                if result != '':
+            for i in range (0,len(requests)):
+                if requests[i] != currentR[i]:
+                    result = requests[i]
                     break
 
             print(result)

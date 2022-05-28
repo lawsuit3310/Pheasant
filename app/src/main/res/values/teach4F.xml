@@ -2,6 +2,7 @@
 <resources>
     <!-- 교사동 4층 -->
     <string-array name="teach4F">
+        <item>교사동 4층</item>
         <item>1학년 1반</item>
         <item>1학년 2반</item>
         <item>1학년 3반</item>
