@@ -86,3 +86,8 @@ lint/tmp/
 
 # databases/
 *.json
+*.db
+
+# Ros/
+Coturnix/devel
+Coturnix/bin
