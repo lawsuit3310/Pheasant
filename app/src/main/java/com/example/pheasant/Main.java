@@ -1,5 +1,6 @@
 package com.example.pheasant;
 
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.Settings;
@@ -68,6 +69,7 @@ public class Main extends AppCompatActivity implements AdapterView.OnItemSelecte
         setFloorStart = findViewById(R.id.FloorS);
         setFloorArrive = findViewById(R.id.FloorA);
         sendBtn = findViewById(R.id.sender);
+        findViewById(R.id.Changer).setOnClickListener(this);
 
         adapter = ArrayAdapter.createFromResource(this,
                 adapters[0], android.R.layout.simple_spinner_item);
@@ -164,20 +166,28 @@ public class Main extends AppCompatActivity implements AdapterView.OnItemSelecte
 
     @Override
     public void onClick(View view) {
-        if (resultS != null && resultA != null) {
-            if (resultS.equals(resultA))
-                Toast.makeText(Main.this, "아잇~ 출발하는 곳하고 도착할 곳을 똑같이 주면 갈 수가 없잖아!", Toast.LENGTH_SHORT).show();
+        if (view.getId() == R.id.sender){
+            if (resultS != null && resultA != null) {
+                if (resultS.equals(resultA))
+                    Toast.makeText(Main.this, "아잇~ 출발하는 곳하고 도착할 곳을 똑같이 주면 갈 수가 없잖아!", Toast.LENGTH_SHORT).show();
+                else
+                {
+                    dbManager.toSend(getDeviceSSAID(), resultS, resultA);
+                    Toast.makeText(this, "그럼 출발한다?", Toast.LENGTH_SHORT).show();
+                }
+                JsonParsing(getJsonString());
+            }
+
             else
             {
-                dbManager.toSend(getDeviceSSAID(), resultS, resultA);
-                Toast.makeText(this, "그럼 출발한다?", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "아잇~ 제대로 된 장소를 알려달란 말이야", Toast.LENGTH_SHORT).show();
             }
-            JsonParsing(getJsonString());
         }
 
-        else
-        {
-            Toast.makeText(this, "아잇~ 제대로 된 장소를 알려달란 말이야", Toast.LENGTH_SHORT).show();
+
+        if (view.getId() == R.id.Changer){
+            Intent intent = new Intent(Main.this, SubActivity.class);
+            startActivity(intent);
         }
     }
 

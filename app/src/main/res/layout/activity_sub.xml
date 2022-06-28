@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:padding="20dp">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        tools:layout_editor_absoluteX="20dp"
+        tools:layout_editor_absoluteY="24dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="566dp">
+            <ImageView
+                android:layout_width="150dp"
+                android:layout_height="100dp"
+                android:layout_marginTop="10dp"
+                android:id="@+id/map"/>
+
+            <Button
+                android:id="@+id/btnMod2"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_alignParentEnd="true"
+                android:text="모드 2" />
+
+            <Button
+                android:id="@+id/btnMod1"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_marginRight="10dp"
+                android:layout_toStartOf="@+id/btnMod2"
+                android:text="모드 1" />
+
+            <Button
+                android:id="@+id/btnSave"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_below="@id/btnMod2"
+                android:layout_alignParentEnd="true"
+                android:text="저장" />
+
+            <Button
+                android:id="@+id/Base"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_centerInParent="true"
+                android:layout_margin="20dp"
+                android:layout_marginTop="30dp"
+                android:backgroundTint="@color/white"
+                android:text="정지"
+                android:textColor="@color/black" />
+
+            <Button
+                android:id="@+id/btnForward"
+                android:layout_width="75dp"
+                android:layout_height="75dp"
+                android:layout_above="@id/Base"
+                android:layout_centerHorizontal="true"
+                android:text="전진" />
+
+            <Button
+                android:id="@+id/btnBackward"
+                android:layout_width="75dp"
+                android:layout_height="75dp"
+                android:layout_below="@id/Base"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="0dp"
+                android:text="후진" />
+
+            <Button
+                android:id="@+id/btnLeft"
+                android:layout_width="75dp"
+                android:layout_height="75dp"
+                android:layout_centerVertical="true"
+                android:layout_toStartOf="@id/Base"
+                android:text="좌회전" />
+
+            <Button
+                android:id="@+id/btnRight"
+                android:layout_width="75dp"
+                android:layout_height="75dp"
+                android:layout_centerVertical="true"
+                android:layout_marginBottom="0dp"
+                android:layout_toEndOf="@id/Base"
+                android:text="우회전" />
+
+            <LinearLayout
+                android:layout_width="150dp"
+                android:layout_height="200dp"
+                android:layout_below="@id/btnBackward"
+                android:layout_alignParentLeft="true"
+                android:layout_marginTop="20dp"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="0dp">
+
+                <Button
+                    android:id="@+id/btnIncrease"
+                    android:layout_width="100dp"
+                    android:layout_height="50dp"
+                    android:text="속도 증가" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal">
+
+                    <TextView
+                        android:id="@+id/txtSpd"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="5dp"
+                        android:text="0"
+                        android:textSize="40dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="m/s"
+                        android:textSize="20dp" />
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/btnDecrease"
+                    android:layout_width="100dp"
+                    android:layout_height="50dp"
+                    android:text="속도 감소" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="150dp"
+                android:layout_height="200dp"
+                android:layout_below="@id/btnBackward"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="20dp"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="0dp">
+
+                <Button
+                    android:id="@+id/btnSpinInc"
+                    android:layout_width="100dp"
+                    android:layout_height="50dp"
+                    android:text="회전속도 증가"
+                    android:textSize="10dp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal">
+
+                    <TextView
+                        android:id="@+id/txtSpinSpd"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="5dp"
+                        android:text="0"
+                        android:textSize="40dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="m/s"
+                        android:textSize="20dp" />
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/btnSpinInDec"
+                    android:layout_width="100dp"
+                    android:layout_height="50dp"
+                    android:text="회전속도 감소"
+                    android:textSize="10dp" />
+            </LinearLayout>
+        </RelativeLayout>
+
+        <Button
+            android:id="@+id/Closer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_marginTop="20dp"
+            android:text="Close" />
+
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

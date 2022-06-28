@@ -3,7 +3,6 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/-36427178/GitHub.Pheasant.iml" filepath="$PROJECT_DIR$/.idea/modules/-36427178/GitHub.Pheasant.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-91229055/Pheasant.iml" filepath="$PROJECT_DIR$/.idea/modules/-91229055/Pheasant.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/Pheasant.app.iml" filepath="$PROJECT_DIR$/.idea/modules/Pheasant.app.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/Pheasant.app.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/Pheasant.app.androidTest.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/Pheasant.app.main.iml" filepath="$PROJECT_DIR$/.idea/modules/Pheasant.app.main.iml" />

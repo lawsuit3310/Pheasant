@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Gradle: com.github.pedroSG94.rtmp-rtsp-stream-client-java:encoder:2.1.9@aar">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/37107dc96e65e1500802dc95b8f2ff0c/transformed/encoder-2.1.9/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/37107dc96e65e1500802dc95b8f2ff0c/transformed/encoder-2.1.9/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/37107dc96e65e1500802dc95b8f2ff0c/transformed/encoder-2.1.9/AndroidManifest.xml" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.pedroSG94.rtmp-rtsp-stream-client-java/encoder/2.1.9/624e83e4774c803155ef552bdab59954b206c3f5/encoder-2.1.9-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
