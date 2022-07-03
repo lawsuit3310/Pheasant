@@ -26,6 +26,8 @@ public class DatabaseManager {
     public final static int SPIN_SPD_INCREASE = 7;
     public final static int SPIN_SPD_DECREASE = 8;
     public final static int SAVE_PROC = 9;
+    public final static int MOD_CHANGE_TO_1 = 10;
+    public final static int MOD_CHANGE_TO_2 = 11;
 
     DatabaseManager() {
         dbRef = FirebaseDatabase.getInstance().getReference();
@@ -79,6 +81,15 @@ public class DatabaseManager {
                     dbRef.child(sender).child("spin_speed").setValue(o.toString());
                 case SPIN_SPD_DECREASE:
                     dbRef.child(sender).child("spin_speed").setValue(o.toString());
+                    break;
+
+                case MOD_CHANGE_TO_1:
+                    dbRef.child(sender).child("control").child("mod").setValue(o.toString());
+                    break;
+                case MOD_CHANGE_TO_2:
+                    dbRef.child(sender).child("control").child("mod").setValue(o.toString());
+                    break;
+
 
             }
         }

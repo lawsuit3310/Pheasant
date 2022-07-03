@@ -45,6 +45,7 @@ public class SubActivity extends AppCompatActivity implements View.OnClickListen
         findViewById(R.id.btnSpinInc).setOnClickListener(this);
         findViewById(R.id.btnSpinInDec).setOnClickListener(this);
         findViewById(R.id.btnMod1).setOnClickListener(this);
+        findViewById(R.id.btnMod2).setOnClickListener(this);
         findViewById(R.id.btnSave).setOnClickListener(this);
 
         map = findViewById(R.id.map);
@@ -127,8 +128,14 @@ public class SubActivity extends AppCompatActivity implements View.OnClickListen
                 spdClear();
                 break;
             case R.id.btnMod1:
+                if (!dbManager.toSend(getDeviceSSAID(), dbManager.MOD_CHANGE_TO_1, 1)) {
+                    Toast.makeText(this, "Error!(7)", Toast.LENGTH_SHORT).show();
+                }
                 break;
             case R.id.btnMod2:
+                if (!dbManager.toSend(getDeviceSSAID(), dbManager.MOD_CHANGE_TO_2, 2)) {
+                    Toast.makeText(this, "Error!(7)", Toast.LENGTH_SHORT).show();
+                }
                 break;
             case R.id.btnSave:
                 Glide.with(SubActivity.this).load("gs://la-prova.appspot.com/images/2fa942d1d424d8f97f79e9cfb85ad6f8.jpg").into(map);
