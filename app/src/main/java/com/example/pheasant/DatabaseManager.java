@@ -28,6 +28,7 @@ public class DatabaseManager {
     public final static int SAVE_PROC = 9;
     public final static int MOD_CHANGE_TO_1 = 10;
     public final static int MOD_CHANGE_TO_2 = 11;
+    public final static int MOD_CHANGE_TO_3 = 12;
 
     DatabaseManager() {
         dbRef = FirebaseDatabase.getInstance().getReference();
@@ -42,6 +43,12 @@ public class DatabaseManager {
     public boolean toSend(String sender, int type, Object o){
         dbRef = FirebaseDatabase.getInstance().getReference();
         try{
+
+            dbRef.child(sender).child("control").child("stop").setValue(1);
+            dbRef.child(sender).child("control").child("forward").setValue(0);
+            dbRef.child(sender).child("control").child("backward").setValue(0);
+            dbRef.child(sender).child("control").child("left").setValue(0);
+            dbRef.child(sender).child("control").child("right").setValue(0);
             switch (type)
             {
                 case MOVE_STOP:
@@ -67,13 +74,12 @@ public class DatabaseManager {
                     dbRef.child(sender).child("control").child("right").setValue(1);
                     break;
                 case SAVE_PROC:
-                    dbRef.child(sender).child("control").updateChildren(ctrlClear());
-                    dbRef.child(sender).child("control").child("save").setValue(1);
+                    dbRef.child(sender).updateChildren(ctrlClear());
+                    dbRef.child(sender).child("save").setValue(1);
                     break;
 
                 case SPD_INCREASE:
                     dbRef.child(sender).child("speed").setValue(o.toString());
-                    break;
                 case SPD_DECREASE:
                     dbRef.child(sender).child("speed").setValue(o.toString());
                     break;
@@ -84,10 +90,10 @@ public class DatabaseManager {
                     break;
 
                 case MOD_CHANGE_TO_1:
-                    dbRef.child(sender).child("control").child("mod").setValue(o.toString());
-                    break;
                 case MOD_CHANGE_TO_2:
-                    dbRef.child(sender).child("control").child("mod").setValue(o.toString());
+                case MOD_CHANGE_TO_3:
+                    Log.d("JB",o.toString());
+                    dbRef.child(sender).child("mod").setValue(o.toString());
                     break;
 
 

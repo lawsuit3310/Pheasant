@@ -46,6 +46,7 @@ public class SubActivity extends AppCompatActivity implements View.OnClickListen
         findViewById(R.id.btnSpinInDec).setOnClickListener(this);
         findViewById(R.id.btnMod1).setOnClickListener(this);
         findViewById(R.id.btnMod2).setOnClickListener(this);
+        findViewById(R.id.btnMod3).setOnClickListener(this);
         findViewById(R.id.btnSave).setOnClickListener(this);
 
         map = findViewById(R.id.map);
@@ -129,18 +130,23 @@ public class SubActivity extends AppCompatActivity implements View.OnClickListen
                 break;
             case R.id.btnMod1:
                 if (!dbManager.toSend(getDeviceSSAID(), dbManager.MOD_CHANGE_TO_1, 1)) {
-                    Toast.makeText(this, "Error!(7)", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, "Error!(8)", Toast.LENGTH_SHORT).show();
                 }
                 break;
             case R.id.btnMod2:
                 if (!dbManager.toSend(getDeviceSSAID(), dbManager.MOD_CHANGE_TO_2, 2)) {
-                    Toast.makeText(this, "Error!(7)", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, "Error!(9)", Toast.LENGTH_SHORT).show();
+                }
+                break;
+            case R.id.btnMod3:
+                if (!dbManager.toSend(getDeviceSSAID(), dbManager.MOD_CHANGE_TO_3, 3)) {
+                    Toast.makeText(this, "Error!(11)", Toast.LENGTH_SHORT).show();
                 }
                 break;
             case R.id.btnSave:
                 Glide.with(SubActivity.this).load("gs://la-prova.appspot.com/images/2fa942d1d424d8f97f79e9cfb85ad6f8.jpg").into(map);
                 if (!dbManager.toSend(getDeviceSSAID(), dbManager.SAVE_PROC, Spd)) {
-                    Toast.makeText(this, "Error!(9)", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, "Error!(10)", Toast.LENGTH_SHORT).show();
                 }
                 break;
 
