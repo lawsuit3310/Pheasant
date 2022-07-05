@@ -36,7 +36,7 @@ public class DatabaseManager {
     DatabaseManager(String sender) {
         this();
         dbRef.child(sender).child("control").updateChildren(ctrlClear());
-        dbRef.child(sender).child("speed").setValue(0);
+        dbRef.child(sender).child("mod").setValue(0);
 
     }
 
@@ -44,21 +44,21 @@ public class DatabaseManager {
         dbRef = FirebaseDatabase.getInstance().getReference();
         try{
 
-            dbRef.child(sender).child("control").child("stop").setValue(1);
-            dbRef.child(sender).child("control").child("forward").setValue(0);
-            dbRef.child(sender).child("control").child("backward").setValue(0);
-            dbRef.child(sender).child("control").child("left").setValue(0);
-            dbRef.child(sender).child("control").child("right").setValue(0);
-            switch (type)
-            {
-                case MOVE_STOP:
-                    //db에 들어있던 값 초기화
-                    dbRef.child(sender).child("control").updateChildren(ctrlClear());
-                    //db에 값 업데이트
                     dbRef.child(sender).child("control").child("stop").setValue(1);
-                    break;
-                case MOVE_FORWARD:
-                    dbRef.child(sender).child("control").updateChildren(ctrlClear());
+                    dbRef.child(sender).child("control").child("forward").setValue(0);
+                    dbRef.child(sender).child("control").child("backward").setValue(0);
+                    dbRef.child(sender).child("control").child("left").setValue(0);
+                    dbRef.child(sender).child("control").child("right").setValue(0);
+                    switch (type)
+                    {
+                        case MOVE_STOP:
+                            //db에 들어있던 값 초기화
+                            dbRef.child(sender).child("control").updateChildren(ctrlClear());
+                            //db에 값 업데이트
+                            dbRef.child(sender).child("control").child("stop").setValue(1);
+                            break;
+                        case MOVE_FORWARD:
+                            dbRef.child(sender).child("control").updateChildren(ctrlClear());
                     dbRef.child(sender).child("control").child("forward").setValue(1);
                     break;
                 case MOVE_BACKWARD:
@@ -113,12 +113,6 @@ public class DatabaseManager {
 
         dbRef.child(sender).child("Start").setValue(argS);
         dbRef.child(sender).child("Arrive").setValue(argA);
-    }
-
-    public DatabaseReference getReference()
-    {
-        dbRef = FirebaseDatabase.getInstance().getReference();
-        return dbRef;
     }
 
     private HashMap<String, Object> ctrlClear(){
